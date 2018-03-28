@@ -17,12 +17,12 @@ const express = require("express"),
     fs = require("fs"),
     app = express(),
     /** create connection properties */
-    connection = mysql.createConnection({
+    /*connection = mysql.createConnection({
         host: config.mysql.hostname,
         user: config.mysql.username,
         password: config.mysql.password,
         database: config.mysql.database
-    });
+    });*/
 
 /** server request logfile */
 app.use((req, res, next) => {
