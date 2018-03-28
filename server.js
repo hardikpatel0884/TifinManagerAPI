@@ -24,10 +24,10 @@ const express = require("express"),
         database: config.mysql.database
     });
 
-/** server request log */
+/** server request logfile */
 app.use((req, res, next) => {
     var log = `${new Date().toString()} : ${req.method} ${req.url} \n`;
-    fs.appendFile('./log/server.log', log);
+    fs.appendFile('./logfile/server.log', log);
     next();
 });
 
