@@ -14,6 +14,7 @@ const express = require("express"),
     config = require("./config/confing"),
     bodyparser = require("body-parser"),
     mysql = require("mysql"),
+    fs = require("fs"),
     app = express(),
     /** create connection properties */
     connection = mysql.createConnection({
@@ -23,9 +24,25 @@ const express = require("express"),
         database: config.mysql.database
     });
 
+/** server request log */
+app.use((req, res, next) => {
+    var log = `${new Date().toString()} : ${req.method} ${req.url} \n`;
+    fs.appendFile('./log/server.log', log);
+    next();
+});
+
 app.use(bodyparser());
 /** connect with database */
 connection.connect();
+
+app.get('/', (req, res) => {
+    res.send("index page");
+});
+
+app.get('/home', (req, res) => {
+    res.send("home page");
+});
+
 /** set application port */
 app.listen(config.port, () => {
     console.log(`magic start on port ${config.port}`);
