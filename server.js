@@ -43,6 +43,10 @@ app.get('/home', (req, res) => {
     res.send("home page");
 });
 
+app.get('/about',(req,res)=>{
+    res.send('about us');
+})
+
 /** set application port */
 app.listen(config.port, () => {
     console.log(`magic start on port ${config.port}`);
