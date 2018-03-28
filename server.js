@@ -17,12 +17,12 @@ const express = require("express"),
     fs = require("fs"),
     app = express(),
     /** create connection properties */
-    connection = mysql.createConnection({
+    /*connection = mysql.createConnection({
         host: config.mysql.hostname,
         user: config.mysql.username,
         password: config.mysql.password,
         database: config.mysql.database
-    });
+    });*/
 
 /** server request logfile */
 app.use((req, res, next) => {
@@ -42,6 +42,10 @@ app.get('/', (req, res) => {
 app.get('/home', (req, res) => {
     res.send("home page");
 });
+
+app.get('/about',(req,res)=>{
+    res.send('about us');
+})
 
 /** set application port */
 app.listen(config.port, () => {
